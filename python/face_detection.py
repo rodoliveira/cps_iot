@@ -1,14 +1,14 @@
 import numpy as np
 import cv2
 
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('xml/haarcascade_frontalface_default.xml')
 
 cap = cv2.VideoCapture(0)
 
 while(True):
     ret, frame = cap.read()
     imgGray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
+    imgGray = cv2.equalizeHist(imgGray)
     faces = face_cascade.detectMultiScale(imgGray, 1.3, 5)
 
     for (x,y,w,h) in faces:
