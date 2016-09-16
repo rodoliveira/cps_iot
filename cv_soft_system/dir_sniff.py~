@@ -1,7 +1,0 @@
-import sys
-import os
-
-database_path = str(sys.argv[1])
-database_folder = os.listdir(sys.argv[1])
-
-print(folder)
