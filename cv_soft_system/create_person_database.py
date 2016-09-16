@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import sys
 
-database_path = '../face_databases/' + str(sys.argv[1]) + '/'
+database_path = '../databases/' + str(sys.argv[1]) + '/'
 face_cascade = cv2.CascadeClassifier('xml/haarcascade_frontalface_default.xml')
 count_faces = 0
 cap = cv2.VideoCapture(0)
