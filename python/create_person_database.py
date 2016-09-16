@@ -11,6 +11,7 @@ max_faces = 10
 
 scale_fact = 1.0
 while(count_faces < max_faces):
+    key = cv2.waitKey(1);
     ret, frame = cap.read()
     imgGray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     imgGray = cv2.equalizeHist(imgGray)
@@ -23,15 +24,14 @@ while(count_faces < max_faces):
           yinit = y-(h*(scale_fact-1))
           crop_img = imgGray[yinit:yinit+(h*scale_fact),xinit:xinit+(w*scale_fact)]
           cv2.imshow('teste', crop_img)
-          cv2.waitKey()
-          if cv2.waitKey() & 0xFF == ord('w'):
+          if key & 0xFF == ord('w'):
               cv2.imwrite(database_path + str(count_faces)+'.pgm', crop_img)
-              print("IMAGE SAVED")
+              print("IMAGE SAVE: " + str(count_faces))
               count_faces = count_faces + 1;
 
     cv2.imshow('img',frame)
     
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    if key & 0xFF == ord('q'):
         break
 
 cap.release()
